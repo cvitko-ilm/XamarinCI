@@ -1,0 +1,47 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf340
+{\fonttbl\f0\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;\red67\green66\blue71;}
+\margl1440\margr1440\vieww18280\viewh16320\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs26 \cf2 \expnd0\expndtw0\kerning0
+def build_app_adhoc\
+\
+    match(\
+        git_url: "https://github.com/ILMServices/CodeSigning.git",\
+        app_identifier: "com.ilmservice.mdc", \
+        username: 'appdev@ilmservice.com',\
+        type:"adhoc")\
+  \
+end\
+\
+def build_app_appstore\
+\
+    match(\
+        git_url: "https://github.com/ILMServices/CodeSigning.git",\
+        app_identifier: "com.ilmservice.mdc", \
+        username: 'appdev@ilmservice.com',\
+        type:"appstore")\
+    \
+  #Go to the Xamarin Studio command line and build the SLN\
+  sh 'xbuild /p:Configuration=AppStore /p:Platform=iPhone "../ilm.eventmobileapp/ilm.eventmobileapp.sln"'\
+  \
+  #TODO: We should have a real build send it up to TestFlight via pilot\
+  \
+  \
+end\
+\
+#lane :dev do\
+#   build_app_dev\
+#end\
+\
+platform :ios do\
+    lane :adhoc do\
+        build_app_adhoc\
+    end\
+\
+    #lane :appstore do\
+    #    build_app_appstore\
+    #end\
+end}
