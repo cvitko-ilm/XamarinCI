@@ -1,8 +1,11 @@
+ENV["MATCH_PASSWORD"] = 'Xamarin4ILM'
+ENV["FASTLANE_PASSWORD"] = 'Xamarin4ILM'
+
 def build_app_adhoc
 
     match(
-        git_url: "https://github.com/ILMServices/CodeSigning.git",
-        app_identifier: "com.ilmservice.mdc", 
+        git_url: "git@github.com:ILMServices/CodeSigning.git",
+        app_identifier: "com.ilmservice.vitko.test", 
         username: 'appdev@ilmservice.com',
         type:"adhoc")
   
@@ -11,8 +14,8 @@ end
 def build_app_appstore
 
     match(
-        git_url: "https://github.com/ILMServices/CodeSigning.git",
-        app_identifier: "com.ilmservice.mdc", 
+        git_url: "git@github.com:ILMServices/CodeSigning.git",
+        app_identifier: "com.ilmservice.vitko.test", 
         username: 'appdev@ilmservice.com',
         type:"appstore")
     
